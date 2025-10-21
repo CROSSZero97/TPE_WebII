@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 02:42:52
+-- Tiempo de generación: 21-10-2025 a las 02:44:35
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,8 +40,8 @@ CREATE TABLE `local` (
 
 INSERT INTO `local` (`id`, `lclnombre`, `lclespera`, `lclespecial`) VALUES
 (1, 'Ombu', 4, 1),
-(3, 'Gustabo', 5, 2),
-(4, 'Calden', 0, 3);
+(2, 'Gustabo', 5, 2),
+(3, 'Calden', 0, 3);
 
 -- --------------------------------------------------------
 
