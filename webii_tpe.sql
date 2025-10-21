@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 02:22:08
+-- Tiempo de generación: 21-10-2025 a las 02:42:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -82,7 +82,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `contrasena`, `admin`) VALUES
-(1, 'webadmin', '$2y$10$dUvlkmigP2gFYQExqgTxAejiA/NRK9d5Po4OfrJHtBiI5C/jwNoZm', 1);
+(1, 'webadmin', '$2y$10$yzQSICfdAM6X5XGJzs.PiuIlnXWRrp6SgqljT6bQ7VJTrlZfwQs5y', 1);
 
 --
 -- Índices para tablas volcadas
@@ -127,7 +127,7 @@ ALTER TABLE `pizza`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
