@@ -1,0 +1,18 @@
+<?php require __DIR__ . '/templates/header.phtml'; ?>
+<h2>Login o Registro</h2>
+<?php if(!empty($error)): ?>
+    <p style="color:red"><?= htmlspecialchars($error) ?></p>
+<?php endif; ?>
+<form action="/WebII_TPE/do_login" method="POST">
+    <div>
+        <label>Usuario
+            <input required name="user" value="<?= isset($_POST['user']) ? htmlspecialchars($_POST['user']) : '' ?>">
+        </label>
+    </div>
+    <div>
+        <label>Contraseña
+            <input required type="password" name="password">
+        </label>
+    </div>
+    <button type="submit">Entrar / Registrar</button>
+</form>

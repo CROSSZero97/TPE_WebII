@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pizzerías</title>
+    <style>
+        body{font-family: Arial, sans-serif; margin:20px;}
+        nav a{margin-right:10px;}
+        table{border-collapse:collapse;width:100%}
+        th,td{border:1px solid #ccc;padding:8px;text-align:left}
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/WebII_TPE/home">Inicio</a>
+    <?php if(!empty($user)): ?>
+        <span> | Hola: <?= htmlspecialchars($user->username) ?></span>
+        <?php if(!empty($user->admin) && $user->admin == 1): ?>
+            <a href="/WebII_TPE/local_new">Agregar local</a>
+        <?php endif; ?>
+        <a href="/WebII_TPE/logout">Logout</a>
+    <?php else: ?>
+        <a href="/WebII_TPE/login">Login / Registrarse</a>
+    <?php endif; ?>
+</nav>
+<hr>
+<main>

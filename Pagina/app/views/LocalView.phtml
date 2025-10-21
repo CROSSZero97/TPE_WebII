@@ -1,0 +1,26 @@
+<?php require __DIR__ . '/templates/header.phtml'; ?>
+<h2><?= $local ? 'Editar local' : 'Nuevo local' ?></h2>
+<?php if(!empty($error)): ?>
+    <p style="color:red"><?= htmlspecialchars($error) ?></p>
+<?php endif; ?>
+<form method="POST" action="<?= $local ? '?action=local_update' : '?action=local_create' ?>">
+    <?php if($local): ?>
+        <input type="hidden" name="id" value="<?= intval($local['id']) ?>">
+    <?php endif; ?>
+    <div>
+        <label>Nombre
+            <input name="lclnombre" type="text" required value="<?= isset($local) ? htmlspecialchars($local['lclnombre']) : '' ?>">
+        </label>
+    </div>
+    <div>
+        <label>Espera
+            <input type="number" name="lclespera" min="0" value="<?= isset($local) ? intval($local['lclespera']) : 0 ?>">
+        </label>
+    </div>
+    <div>
+        <label>Especial (id pizza)
+            <input name="lclespecial" value="<?= isset($local) ? htmlspecialchars($local['lclespecial']) : '' ?>">
+        </label>
+    </div>
+    <button type="submit">Guardar</button>
+</form>
