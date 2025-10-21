@@ -11,7 +11,6 @@
 **DER :** 
 [DER](DER.png)
 
-**SQL :**
+**SQL :** [SQL](webii_tpe.sql)
 
-[SQL](webii_tpe.sql)
 
