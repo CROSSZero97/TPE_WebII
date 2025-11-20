@@ -3,7 +3,7 @@
 <?php if(!empty($error)): ?>
     <p style="color:red"><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
-<form method="POST" action="<?= $local ? '?action=local_update' : '?action=local_create' ?>">
+<form method="POST" action="<?= $local ? BASE_URL . 'local_update' : BASE_URL . 'local_create' ?>">
     <?php if($local): ?>
         <input type="hidden" name="id" value="<?= intval($local['id']) ?>">
     <?php endif; ?>
@@ -18,8 +18,24 @@
         </label>
     </div>
     <div>
-        <label>Especial (id pizza)
-            <input name="lclespecial" value="<?= isset($local) ? htmlspecialchars($local['lclespecial']) : '' ?>">
+        <label>Especial (elegir pizza)
+            <select name="lclespecial" required>
+                <option value="">-- Seleccione una pizza --</option>
+                <?php if(!empty($pizzas)): ?>
+                    <?php foreach($pizzas as $pz): ?>
+                        <?php
+                            $pzId = intval($pz['id']);
+                            $selected = '';
+                            if(isset($local) && isset($local['lclespecial']) && intval($local['lclespecial']) === $pzId){
+                                $selected = 'selected';
+                            }
+                        ?>
+                        <option value="<?= $pzId ?>" <?= $selected ?>>
+                            <?= htmlspecialchars($pz['pznombre']) ?> - $<?= number_format($pz['pzprecio'], 2) ?>
+                        </option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </select>
         </label>
     </div>
     <button type="submit">Guardar</button>

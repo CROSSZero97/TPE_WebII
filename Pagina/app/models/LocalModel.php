@@ -12,7 +12,7 @@ class LocalModel {
         $allowed = ['lclnombre','lclespera','pizza.pzprecio'];
         $col = in_array($orderBy,$allowed) ? $orderBy : 'lclnombre';
 
-        $stmt = $this->db->prepare("SELECT `local`.id, `local`.lclnombre, `local`.lclespera, `local`.lclespecial, pizza.pznombre AS especial_nombre, pizza.pzprecio AS especial_precio FROM `local` LEFT JOIN pizza ON `local`.lclespecial = pizza.id ORDER BY $col ASC ");        
+        $stmt = $this->db->prepare("SELECT `local`.id, `local`.lclnombre, `local`.lclespera, `local`.lclespecial, pizza.pznombre AS especial_nombre, pizza.pzprecio AS especial_precio FROM `local` LEFT JOIN pizza ON `local`.lclespecial = pizza.id ORDER BY $col ASC ");
         $stmt->execute();
         return $stmt->fetchAll();
     }

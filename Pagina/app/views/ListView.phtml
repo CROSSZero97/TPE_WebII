@@ -1,17 +1,15 @@
 <?php require __DIR__ . '/templates/header.phtml'; ?>
 <h1>Locales</h1>
 
-<form method="GET" action="/WebII_TPE/home">
+<form method="GET" action="<?= BASE_URL ?>home">
     <input type="hidden" name="action" value="home">
     <label for="order">Ordenar por:</label>
-    <select id="order" onchange="window.location.href='/WebII_TPE/home/' + this.value;">
+    <select id="order" onchange="window.location.href='<?= BASE_URL ?>home/' + this.value;">
         <option value="nombre" <?= ($alias ?? '') === 'nombre' ? 'selected' : '' ?>>Nombre</option>
         <option value="espera" <?= ($alias ?? '') === 'espera' ? 'selected' : '' ?>>Espera</option>
         <option value="precios" <?= ($alias ?? '') === 'precios' ? 'selected' : '' ?>>Precios</option>
     </select>
 </form>
-
-
 
 <?php if(empty($locals)): ?>
     <p>No hay locales registrados.</p>
@@ -28,14 +26,61 @@
                 <td><?= isset($l['especial_precio']) ? '$' . number_format($l['especial_precio'], 2) : '—' ?></td>
                 <?php if(!empty($user) && $user->admin==1): ?>
                     <td>
-                        <a href="/WebII_TPE/local_edit/<?= intval($l['id']) ?>">Editar</a>
-                        <form method="POST" action="/WebII_TPE/delete" style="display:inline">
+                        <a href="<?= BASE_URL ?>local_edit/<?= intval($l['id']) ?>">Editar</a>
+                        <form method="POST" action="<?= BASE_URL ?>local_delete" style="display:inline">
                             <input type="hidden" name="id" value="<?= intval($l['id']) ?>">
-                            <button onclick="return confirm('Eliminar?')">Borrar</button>
+                            <button type="submit" onclick="return confirm('Eliminar?')">Borrar</button>
                         </form>
                     </td>
                 <?php endif; ?>
             </tr>
         <?php endforeach; ?>
+    </table>
+<?php endif; ?>
+
+<hr>
+<h2>Pizzas especiales</h2>
+
+<?php if(empty($pizzasWithLocals)): ?>
+    <p>No hay pizzas registradas.</p>
+<?php else: ?>
+    <table>
+        <thead>
+            <tr>
+                <th>Pizza</th>
+                <th>Precio</th>
+                <th>Locales que la tienen como especial</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($pizzasWithLocals as $pz): ?>
+                <tr>
+                    <td><?= htmlspecialchars($pz['pznombre']) ?></td>
+                    <td><?= '$' . number_format($pz['pzprecio'], 2) ?></td>
+                    <td>
+                        <?php if(!empty($pz['locales'])): ?>
+                            <table style="border-collapse:collapse;width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="border:1px solid #ccc;padding:4px">Local</th>
+                                        <th style="border:1px solid #ccc;padding:4px">Espera</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($pz['locales'] as $ll): ?>
+                                        <tr>
+                                            <td style="border:1px solid #ccc;padding:4px"><?= htmlspecialchars($ll['lclnombre']) ?></td>
+                                            <td style="border:1px solid #ccc;padding:4px"><?= intval($ll['lclespera']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <em>Ningún local tiene esta pizza como especial</em>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 <?php endif; ?>
