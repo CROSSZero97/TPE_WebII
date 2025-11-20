@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 02:44:35
+-- Tiempo de generación: 20-11-2025 a las 18:38:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,8 +40,8 @@ CREATE TABLE `local` (
 
 INSERT INTO `local` (`id`, `lclnombre`, `lclespera`, `lclespecial`) VALUES
 (1, 'Ombu', 4, 1),
-(2, 'Gustabo', 5, 2),
-(3, 'Calden', 0, 3);
+(3, 'Calden', 0, 3),
+(8, 'Juan', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `local`
 --
 ALTER TABLE `local`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `pizza`
